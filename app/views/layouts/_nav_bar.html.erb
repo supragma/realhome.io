@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <!-- <img src="bird.jpg" alt="logo" style="width:40px;"> -->
+    <h2 style="color:white;">Real Home</h2>
+  </a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <% if current_user.present? %>
+       <li class="nav-item">
+        <%= link_to('Log out', destroy_user_session_path, method: :delete,class: "nav-link") %>   
+      </li>
+      <li class="nav-item">
+        <a href="">Buy</a>
+      </li>
+      <li class="nav-item">
+        <a href="">Sell</a> 
+      </li>
+      <li class="nav-item">
+        <a href="">Rent</a>   
+      </li>
+    <% else %>
+       <li class="nav-item">
+        <%= link_to('Sign Up', new_user_registration_path,class: "nav-link") %>   
+      </li>
+    <% end %>
+  </ul>
+</nav>
