@@ -1,12 +1,7 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2 
-  codecov: codecov/codecov@1.0.2
-jobs:
-  build:
-    steps:
-      - codecov/upload:
-          file: {{ coverage_report_filepath }}
+
 jobs:
   build:
     docker:
@@ -22,4 +17,3 @@ jobs:
             source $BASH_ENV
             gem install bundler
 
-  
