@@ -6,9 +6,10 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+# gem postgress
+gem 'pg', '~> 0.18.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -22,7 +23,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rubocop-rails', require: false
-gem 'pg', '~> 0.18.4'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'devise'
@@ -36,6 +36,8 @@ gem "cancancan"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'codecov', :require => false
+  gem 'rspec-rails', '~> 4.0.0'
   gem 'brakeman'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
