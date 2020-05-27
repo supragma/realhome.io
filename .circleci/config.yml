@@ -1,61 +1,18 @@
-# This code is licensed from CircleCI to the user under the MIT license. See
-# https://circleci.com/orbs/registry/licensing for details.
 version: 2.1
-
-description: Upload your coverage reports to Codecov without dealing with complex configurations.  This orb helps you get coverage results quickly so that you can breathe easier and commit your code with confidence.
-
-commands:
-  upload:
-    parameters:
-      conf:
-        description: Used to specify the location of the .codecov.yml config file
-        type: string
-        default: ".codecov.yml"
-      file:
-        description: Path to the code coverage data file to upload.
-        type: string
-        default: ""
-      flags:
-        description: Flag the upload to group coverage metrics (e.g. unittests | integration | ui,chrome)
-        type: string
-        default: ""
-      token:
-        description: Set the private repository token (defaults to environment variable $CODECOV_TOKEN)
-        type: string
-        default: ${CODECOV_TOKEN}
-      upload_name:
-        description: Custom defined name of the upload. Visible in Codecov UI
-        type: string
-        default: ${CIRCLE_BUILD_NUM}
-      when:
-        description: When should this step run?
-        type: string
-        default: "always"
+orbs:
+  ruby: circleci/ruby@0.1.2 
+  
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
     steps:
-      - when:
-          condition: << parameters.file >>
-          steps:
-            - run:
-                name: Upload Coverage Results
-                command: |
-                  curl -s https://codecov.io/bash | bash -s -- \
-                    -f "<< parameters.file >>" \
-                    -t "<< parameters.token >>" \
-                    -n "<< parameters.upload_name >>" \
-                    -y "<< parameters.conf >>" \
-                    -F "<< parameters.flags >>" \
-                    -Z || echo 'Codecov upload failed'
-                when: << parameters.when >>
-      - unless:
-          condition: << parameters.file >>
-          steps:
-            - run:
-                name: Upload Coverage Results
-                command: |
-                  curl -s https://codecov.io/bash | bash -s -- \
-                    -t "<< parameters.token >>" \
-                    -n "<< parameters.upload_name >>" \
-                    -y "<< parameters.conf >>" \
-                    -F "<< parameters.flags >>" \
-                    -Z || echo 'Codecov upload failed'
-                when: << parameters.when >>
+      - checkout
+      - run:
+          name: Force Bundler Version
+          command: |
+            sudo gem update --system
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
