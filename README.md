@@ -1,4 +1,6 @@
 # README
+[![supragma](https://circleci.com/gh/supragma/realhome.io.svg?style=svg)](https://app.circleci.com/pipelines/github/supragma/realhome.io)
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
