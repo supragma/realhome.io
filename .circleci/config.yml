@@ -1,8 +1,6 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2 
-  codecov: codecov/codecov@1.0.2
-
 jobs:
   build:
     docker:
@@ -17,6 +15,3 @@ jobs:
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
             gem install bundler
-      - codecov/upload:
-          file: {{ coverage_report_filepath }} 
-               
