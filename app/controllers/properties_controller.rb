@@ -50,7 +50,7 @@ class PropertiesController < ApplicationController
     # permit list between create and update. Also, you can specialize
     # this method with per-user checking of permissible attributes.
     def property_params
-      params.require(:property).permit(:user_id,:monthly_rent,:security_deposit,:bedrooms,:bathrooms,:area_in_square_feet,:lease_duration,:detail_description,:lease_summary,:availabel_date,property_images: [])
+      params.require(:property).permit(:user_id,:address,:latitude,:longitude,:monthly_rent,:security_deposit,:bedrooms,:bathrooms,:area_in_square_feet,:lease_duration,:detail_description,:lease_summary,:availabel_date,property_images: [])
     end
 
     def find_property

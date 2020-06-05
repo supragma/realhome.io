@@ -11,6 +11,9 @@ class CreateProperties < ActiveRecord::Migration[6.0]
       t.string    :detail_description
       t.string    :lease_summary
       t.string    :tour_availibility
+      t.string    :address
+      t.float     :longitude
+      t.float     :latitude
       t.date      :availabel_date
 
       t.timestamps

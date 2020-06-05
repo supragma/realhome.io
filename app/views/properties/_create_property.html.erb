@@ -42,8 +42,33 @@
   <%= f.file_field :property_images, multiple: true %>
   </div>
 </div>
-  <%= hidden_field_tag :user_id, value: 11  %>
+<div class="form-group row">
+  <label for="PropertyImages" class="col-sm-2 col-form-label">Address</label>
+  <div class="col-sm-10">
+   <%= f.text_field :address, class: "form-control",id: "search_input",placeholder: "Type address..." %>
+ </div>
+  <!-- <input type="hidden" id="loc_lat" />
+  <input type="hidden" id="loc_long" /> -->
+<div class="form-group row">
+  <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyC6UnIXAtmx5whQKMuVepRDY5hBWNpkefg"></script>
+ <script type="text/javascript">
+   function initialize() {
+     var input = document.getElementById('search_input');
+     var autocomplete = new google.maps.places.Autocomplete(input);
+     // Set initial restrict to the greater list of countries.
+     autocomplete.setComponentRestrictions(
+        {'country': ['us', 'pr', 'vi', 'gu', 'mp']});
+
+        // Specify only the data fields that are needed.
+     autocomplete.setFields(
+          ['address_components', 'geometry', 'icon', 'name']);
+   }
+
+   google.maps.event.addDomListener(window, 'load', initialize);
+ </script>
