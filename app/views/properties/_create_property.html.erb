@@ -1,0 +1,57 @@
+<h1>Create New Property</h1>
+<br>
+<%= form_for Property.new do |f| %>
+
+ <div class="form-group row">
+  <label for="MonthlyRent" class="col-sm-2 col-form-label">Monthly Rent</label>
+  <div class="col-sm-10">
+    <%= f.text_field :monthly_rent, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="SecurityDeposit" class="col-sm-2 col-form-label">Security Deposit</label>
+  <div class="col-sm-10">
+    <%= f.text_field :security_deposit, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="DetailDescription" class="col-sm-2 col-form-label">Detail Description</label>
+  <div class="col-sm-10">
+    <%= f.text_area :detail_description, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="AreaInSquareFeet" class="col-sm-2 col-form-label">Area In Square Feet</label>
+  <div class="col-sm-10">
+   <%= f.text_field :area_in_square_feet, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="LeaseDuration" class="col-sm-2 col-form-label">Lease Duration</label>
+  <div class="col-sm-10">
+    <%= f.text_field :lease_duration, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="PropertyImages" class="col-sm-2 col-form-label">Upload Images</label>
+  <div class="col-sm-10">
+  <%= f.file_field :property_images, multiple: true %>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="PropertyImages" class="col-sm-2 col-form-label">Address</label>
+  <div class="col-sm-10">
+   <%= f.text_field :address, class: "form-control",id: "search_input",placeholder: "Type address..." %>
+ </div>
+  <!-- <input type="hidden" id="loc_lat" />
+  <input type="hidden" id="loc_long" /> -->
+<div class="form-group row">
+  <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
