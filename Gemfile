@@ -10,6 +10,7 @@ gem 'rails', '~> 6.0.0'
 gem 'puma', '~> 3.11'
 # gem postgress
 gem 'pg', '~> 0.18.4'
+gem 'geocoder'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

@@ -3,7 +3,6 @@ class PropertiesController < ApplicationController
   before_action :find_property, only: [:edit,:update]
 
   def index
-    @property = Property.new
   end
 
   def new
