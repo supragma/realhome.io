@@ -1,12 +1,12 @@
 class PropertiesController < ApplicationController
 
-  before_action :find_property, only: [:edit,:update]
+  before_action :find_property, only: [:edit,:update,:show]
 
   def index
   end
 
   def new
-    
+    @property = Property.new
   end
 
   def create

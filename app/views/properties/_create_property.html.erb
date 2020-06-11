@@ -55,18 +55,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyC6UnIXAtmx5whQKMuVepRDY5hBWNpkefg"></script>
- <script type="text/javascript">
-   function initialize() {
-     var input = document.getElementById('search_input');
-     var autocomplete = new google.maps.places.Autocomplete(input);
-     // Set initial restrict to the greater list of countries.
-     autocomplete.setComponentRestrictions(
-        {'country': ['us', 'pr', 'vi', 'gu', 'mp']});
-
-   }
-
-   google.maps.event.addDomListener(window, 'load', initialize);
- </script>
-<% end %>

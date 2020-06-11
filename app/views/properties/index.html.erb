@@ -8,7 +8,7 @@
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
             <%# property.property_images.each do |p_image|%>
               <% if property.property_images.present? %>
-                <%= image_tag  property.property_images.last %>
+                <%=link_to( image_tag(property.property_images.last),property_path(property)) %>
               <% else %>
                 <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <% end %>
