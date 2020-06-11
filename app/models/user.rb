@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :properties
   
   def is_property_agent?
-    has_role? :property_agent
+    has_role? :property_admin
   end
 
   def is_seller?

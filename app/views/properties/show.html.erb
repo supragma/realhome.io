@@ -1,31 +1,36 @@
-<%= link_to 'Add New Property', new_property_path, class: "btn btn-info" %>
-<section class="search-box">
+ <br>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12 listing-block">
-        <% Property.all.each do |property| %>
-          <div class="media">
-            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
-            <% property.property_images.each do |p_image|%>
-              <% if property.property_images.present? %>
-                <%= image_tag  property.property_images.last %>
-              <% else %>
-                <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
-              <% end %>
-            <% end %>
-            <div class="media-body pl-3">
-              <div class="price">$<%= property.monthly_rent %><small>New York</small></div>
-              <div class="stats">
-                  <span><i class="fa fa-arrows-alt"></i><%= property.area_in_square_feet %> Sq ft</span>
-                  <span><i class="fa fa-bath"></i><%= property.bedrooms %> Bedrooms</span>
+      <div class="col-md-6">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+             <% @property.property_images.each_with_index do |p_image, index| %>
+              <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= image_tag p_image,class: "d-block w-100" %>
               </div>
-              <div class="address"><%= property.address %></div>
-            </div>
+            <% end %>
           </div>
-          
-        <% end %>
+        </div>
+      </div>
+       <div class="col-md-4">
+          <h2 style="text-align:center;">Ammenities</h2>
+          <div class="price">$<%= @property.monthly_rent %></div>
+          <span><i class="fa fa-arrows-alt"></i><%= @property.area_in_square_feet %> Sq ft</span>
+          <span><i class="fa fa-bath"></i><%= @property.bedrooms %> Bedrooms</span>
+          <span><i class="fa fa-arrows-alt"></i>Longitude: <%= @property.longitude %></span>
+          <span><i class="fa fa-bath"></i>Latitude:<%= @property.latitude %></span>
+          <div class="address"><%= @property.address %></div>
+        </div>
+      <div class="row">
+      
       </div>
     </div>
   </div>
-</section>
+
+
+
+
+
+
+
 
