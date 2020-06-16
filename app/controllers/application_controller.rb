@@ -7,5 +7,5 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-
+  
 end

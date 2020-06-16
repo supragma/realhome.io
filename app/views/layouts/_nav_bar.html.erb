@@ -11,15 +11,21 @@
        <li class="nav-item">
         <%= link_to('Log out', destroy_user_session_path, method: :delete,class: "nav-link") %>   
       </li>
-      <%=current_user.roles.map{|a| a.name}%>
+      <li>
+        <% link_to 'Manage Properties', properties_path(current_user) %>
+      </li>
+      <%#=current_user.roles.map{|a| a.name}%>
       <li class="nav-item">
-        <a href="">Buy</a>
+        <a href="", class= "nav-link">Sell</a> 
       </li>
       <li class="nav-item">
-        <a href="">Sell</a> 
+        <a href="", class= "nav-link">Buy</a> 
       </li>
       <li class="nav-item">
-        <a href="">Rent</a>   
+        <a href="", class= "nav-link">Rent</a> 
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Manage Properties', properties_path, class: "nav-link" %> 
       </li>
     <% else %>
        <li class="nav-item">

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     get "property_agent", to: "users/property_agents#new", as: "new_property_agent"
     post "property_agent", to: "users/property_agents#create", as: "property_agents"
   end
-  devise_for :users, controllers: { registrations: "users/registrations"} 
+  devise_for :users, controllers: { registrations: "users/registrations",omniauth_callbacks: 'users/omniauth' } 
   resources :properties
 end

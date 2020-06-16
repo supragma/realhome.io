@@ -9,11 +9,10 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'b1e84502737c76716bdc9231164f7e539ff04820a86973a72c282cf80c5e0aff6c25b0c7477028d28c40a65fcec8651d5db0a86231a6882427e0a12f583c3c85'
-
+  config.scoped_views = true
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
-
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -22,7 +21,12 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET'], scope: 'public_profile,email'
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
+      scope: 'userinfo.email, userinfo.profile',
+      image_aspect_ratio: 'square',
+      image_size: 50
+  }
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
 

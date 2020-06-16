@@ -12,17 +12,17 @@
           </div>
         </div>
       </div>
-       <div class="col-md-4">
+     <div class="col-md-6">
+       <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@property.latitude},#{@property.longitude}&markers=#{@property.latitude},#{@property.longitude}&zoom=7&size=640x400&key=#{ENV['GOOGLE_MAP_API_KEY']}",
+            class: 'img-fluid img-rounded', alt: "#{@property.address} on the map"%>
+
           <h2 style="text-align:center;">Ammenities</h2>
-          <div class="price">$<%= @property.monthly_rent %></div>
-          <span><i class="fa fa-arrows-alt"></i><%= @property.area_in_square_feet %> Sq ft</span>
-          <span><i class="fa fa-bath"></i><%= @property.bedrooms %> Bedrooms</span>
-          <span><i class="fa fa-arrows-alt"></i>Longitude: <%= @property.longitude %></span>
-          <span><i class="fa fa-bath"></i>Latitude:<%= @property.latitude %></span>
-          <div class="address"><%= @property.address %></div>
-        </div>
-      <div class="row">
-      
+        <div class="price">$<%= @property.monthly_rent %></div>
+        <span><i class="fa fa-arrows-alt"></i><%= @property.area_in_square_feet %> Sq ft</span>
+        <span><i class="fa fa-bath"></i><%= @property.bedrooms %> Bedrooms</span>
+        <span><i class="fa fa-arrows-alt"></i>Longitude: <%= @property.longitude %></span>
+        <span><i class="fa fa-bath"></i>Latitude:<%= @property.latitude %></span>
+        <div class="address"><%= @property.address %></div>
       </div>
     </div>
   </div>

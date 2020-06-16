@@ -19,6 +19,10 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+# devise facebook authentication
+gem 'omniauth-facebook'
+# devise google authentication
+gem 'omniauth-google-oauth2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -35,6 +39,8 @@ gem "rolify"
 # cancancac
 gem "cancancan"
 
+gem 'activerecord-session_store'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'codecov', :require => false
@@ -50,7 +56,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  #gem 'dotenv', '~> 2.2.1'
 end
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
   # Adds support for Capybara system testing and selenium driver

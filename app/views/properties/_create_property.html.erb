@@ -55,3 +55,15 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function initialize() {
+    var input = document.getElementById('search_input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+}
+</script>
+
+
